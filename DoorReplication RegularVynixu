@@ -141,7 +141,7 @@ DoorReplication.ReplicateDoor = function(room, config)
     else
         connections.holdBegan = fakeDoor.Lock.UnlockPrompt.PromptButtonHoldBegan:Connect(function()
             local key = Char:FindFirstChild(config.CustomKeyName) or Char:FindFirstChild("Key")
-            
+            -- plays
                 Hum:LoadAnimation("rbxassetid://10309344354"):Play()
 
         end)
