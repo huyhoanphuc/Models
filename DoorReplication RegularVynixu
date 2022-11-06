@@ -91,7 +91,7 @@ end
 DoorReplication.ReplicateDoor = function(room, config)
     -- Door table
 
-   -- config.CustomKeyName = typeof(config.CustomKeyName) == "string" and config.CustomKeyName or "Key"
+    config.CustomKeyName = "keyn.Name"
 
     local doorTable = {
         Model = fakeDoor,
@@ -138,15 +138,22 @@ DoorReplication.ReplicateDoor = function(room, config)
                 task.wait()
             end
         end)
-    
-  
-   
+    else
+        connections.holdBegan = fakeDoor.Lock.UnlockPrompt.PromptButtonHoldBegan:Connect(function()
+           local key = Char:FindFirstAncestorWhichIsA("Tool")
+            
+            if key then
+               -- Hum:LoadAnimation(key.Animations.use):Play()
+                firesignal(ReSt.Bricks.Caption.OnClientEvent, "Unlocking", true)
+            else
+              --  firesignal(ReSt.Bricks.Caption.OnClientEvent, "You need a key!", true)
+            end
+        end)
 
         connections.promptTriggered = fakeDoor.Lock.UnlockPrompt.Triggered:Connect(function()
             local key = Char:FindFirstAncestorWhichIsA("Tool")
             
             if key then
-          
                 for _, v in next, connections do
                     v:Disconnect()
                 end
