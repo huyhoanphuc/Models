@@ -138,13 +138,9 @@ DoorReplication.ReplicateDoor = function(room, config)
                 task.wait()
             end
         end)
-    else
-        connections.holdBegan = fakeDoor.Lock.UnlockPrompt.PromptButtonHoldBegan:Connect(function()
-          --  local key = Char:FindFirstChild(config.CustomKeyName) or Char:FindFirstChild("Key")
-
-              
-
-        end)
+    
+       end
+   
 
         connections.promptTriggered = fakeDoor.Lock.UnlockPrompt.Triggered:Connect(function()
             local key = Char:FindFirstAncestorWhichIsA("Tool")
