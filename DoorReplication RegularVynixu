@@ -139,7 +139,7 @@ DoorReplication.ReplicateDoor = function(room, config)
             end
         end)
     
-       end
+  
    
 
         connections.promptTriggered = fakeDoor.Lock.UnlockPrompt.Triggered:Connect(function()
