@@ -91,7 +91,7 @@ end
 DoorReplication.ReplicateDoor = function(room, config)
     -- Door table
 
-    config.CustomKeyName = typeof(config.CustomKeyName) == "string" and config.CustomKeyName or "Key"
+   -- config.CustomKeyName = typeof(config.CustomKeyName) == "string" and config.CustomKeyName or "Key"
 
     local doorTable = {
         Model = fakeDoor,
@@ -140,17 +140,17 @@ DoorReplication.ReplicateDoor = function(room, config)
         end)
     else
         connections.holdBegan = fakeDoor.Lock.UnlockPrompt.PromptButtonHoldBegan:Connect(function()
-            local key = Char:FindFirstChild(config.CustomKeyName) or Char:FindFirstChild("Key")
-            -- plays
+          --  local key = Char:FindFirstChild(config.CustomKeyName) or Char:FindFirstChild("Key")
+
                 Hum:LoadAnimation("rbxassetid://10309344354"):Play()
 
         end)
 
         connections.promptTriggered = fakeDoor.Lock.UnlockPrompt.Triggered:Connect(function()
-            local key = true
+            local key = Char:FindFirstAncestorWhichIsA("Tool")
             
             if key then
-             local key = Char:FindFirstAncestorWhichIsA("Tool")
+          
                 for _, v in next, connections do
                     v:Disconnect()
                 end
