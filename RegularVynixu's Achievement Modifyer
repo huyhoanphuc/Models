@@ -23,13 +23,13 @@ local Achievements = {}
 Achievements.Get = function(data)
 
     task.spawn(function()
-    local Image = LoadCustomAsset(data.Image)
         local frame = Plr.PlayerGui.MainUI.AchievementsHolder.Achievement:Clone()
 
         frame.Name = "LiveAchievement"
         frame.Frame.Details.Title.Text = data.Title
         frame.Frame.Details.Desc.Text = data.Desc
         frame.Frame.Details.Reason.Text = data.Reason
+          local Image = LoadCustomAsset(data.Image)
         frame.Frame.ImageLabel.Image = Image
         frame.Size = UDim2.new(0, 0, 0, 0)
         frame.Frame.Position = UDim2.new(1.1, 0, 0, 0)
@@ -46,8 +46,8 @@ Achievements.Get = function(data)
         task.wait(0.5)
         frame:TweenSize(UDim2.new(1, 0, -0.1, 0), "InOut", "Quad", 0.5, true)
         task.wait(0.5)
+         delfile(Image)
         frame:Destroy()
-        delfile(Image)
     end)
 end
 
