@@ -46,8 +46,9 @@ Achievements.Get = function(data)
         task.wait(0.5)
         frame:TweenSize(UDim2.new(1, 0, -0.1, 0), "InOut", "Quad", 0.5, true)
         task.wait(0.5)
-         delfile(Image)
+ 
         frame:Destroy()
+                delfile(Image)
     end)
 end
 
